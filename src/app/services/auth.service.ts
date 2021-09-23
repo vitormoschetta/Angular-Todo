@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { finalize, map } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
-import { DataResult } from 'src/app/models/dataResult';
-import { User } from '../models/user';
 import { environment } from 'src/environments/environment';
-import { UserResult } from '../models/userResult';
+import { AuthResult } from '../models/authResult';
+import { LocalStorageService } from './local-storage.service';
+import { User } from '../models/user';
 
 @Injectable({
   providedIn: 'root'
@@ -13,31 +13,39 @@ import { UserResult } from '../models/userResult';
 
 export class AuthService {
   USER_STORE: string = 'currentUser';
-  USER_TOKEN_STORE: string = 'tokenUser'
   baseUrl: string = environment.baseUrl
-  userResult!: UserResult;
-  private currentUserSubject!: BehaviorSubject<User>;
-  public currentUser!: Observable<User>;
+  private currentUserSubject!: BehaviorSubject<User | null>;
+  public currentUser!: Observable<User | null>
 
-  constructor(
-    private http: HttpClient) {
-    this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem(this.USER_STORE) || ''))
+  constructor(private http: HttpClient, private localStorageService: LocalStorageService) {
+    let user = JSON.parse(localStorageService.get(this.USER_STORE))
+    this.currentUserSubject = new BehaviorSubject<User | null>(user)
     this.currentUser = this.currentUserSubject.asObservable()
   }
 
-  login(email: string, password: string): Observable<UserResult> {
-    return this.http.post<UserResult>(`${this.baseUrl}/login`, { email, password })
+  public get currentUserValue(): User | null {
+    return this.currentUserSubject.value
+  }
+
+  getUser(): Observable<User> {
+    return this.localStorageService.get(this.USER_STORE)
+  }
+
+  login(email: string, password: string): Observable<User> {
+    return this.http.post<AuthResult>(`${this.baseUrl}/login`, { email, password })
       .pipe(map(data => {
-        this.userResult = data
-        this.setSession()
-        this.currentUserSubject.next(data.user)
-        return data
+        console.log(data)
+        const user = new User(data.user.email, data.user.password, data.user.username, data.accessToken)
+        this.localStorageService.set(user, this.USER_STORE)
+        this.currentUserSubject.next(user)
+        return user
       }))
   }
 
-  setSession() {
-    localStorage.setItem(this.USER_STORE, JSON.stringify(this.userResult.user))
-    localStorage.setItem(this.USER_TOKEN_STORE, this.userResult.token)
+  logout() {
+    this.localStorageService.remove(this.USER_STORE)
+    this.currentUserSubject.next(null)
   }
+
 
 }

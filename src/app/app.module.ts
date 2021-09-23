@@ -8,7 +8,6 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
-import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [
@@ -24,8 +23,7 @@ import { AuthService } from './services/auth.service';
     ReactiveFormsModule, 
     HttpClientModule,
   ],
-  providers: [
-    AuthService
+  providers: [   
   ],
   bootstrap: [AppComponent]
 })

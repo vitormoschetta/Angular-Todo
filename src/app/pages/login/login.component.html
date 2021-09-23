@@ -1,23 +1,14 @@
 <div class="uk-container">
-  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <form (ngSubmit)="onSubmit()">
 
     <div class="uk-margin">
-      <input class="uk-input uk-form-width-large uk-form-large" type="text" placeholder="E-mail"
-        formControlName="email" />
-      <div class="uk-alert-danger" uk-alert *ngIf="submitted && f.email.invalid">
-        <a class="uk-alert-close" uk-close></a>
-        <p>Informe um login!</p>
-      </div>
+      <input class="uk-input uk-form-width-large uk-form-large" type="text" placeholder="E-mail" [(ngModel)]="email"
+        name="email" />
     </div>
 
     <div class="uk-margin">
       <input class="uk-input uk-form-width-large uk-form-large" type="text" placeholder="Password"
-        formControlName="password" />
-      <div class="uk-alert-danger" uk-alert *ngIf="submitted && f.password.invalid">
-        <a class="uk-alert-close" uk-close></a>
-        <p>Informe a senha!</p>
-      </div>
-
+        [(ngModel)]="password" name="password" />
     </div>
 
     <button class="uk-button uk-button-primary uk-button-large uk-width-small" type="submit">
