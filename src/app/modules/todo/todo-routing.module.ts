@@ -6,10 +6,10 @@ import { TodoEditComponent } from './todo-edit/todo-edit.component';
 import { TodoListComponent } from './todo-list/todo-list.component';
 
 const routes: Routes = [
-  { path: '',  component: TodoListComponent},
-  { path: 'add', component: TodoAddComponent},
-  { path: 'edit',  component: TodoEditComponent},
-  { path: 'delete', component: TodoDeleteComponent}, 
+  { path: '', component: TodoListComponent },
+  { path: 'add', component: TodoAddComponent },
+  { path: 'edit', component: TodoEditComponent },
+  { path: 'delete', component: TodoDeleteComponent },
 ];
 
 @NgModule({
