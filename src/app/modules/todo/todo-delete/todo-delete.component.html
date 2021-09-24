@@ -1,1 +1,19 @@
-<p>todo-delete works!</p>
+<div>
+    <div class="uk-margin">
+        <input class="uk-input uk-form-width-large uk-form-large" type="text" value="{{todo?.title}}" disabled />
+    </div>
+
+    <div *ngIf="responseError" class="uk-alert-danger" uk-alert>
+        <p>{{responseError}}</p>
+    </div>
+
+    <div>
+        <button class="uk-button uk-button-danger uk-button-large" (click)="onDelete()">
+            Delete Confirm
+        </button>
+
+        <button class="uk-button uk-button-default uk-button-large uk-margin-left" routerLink="/todo">
+            Return
+        </button>
+    </div>
+</div>

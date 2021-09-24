@@ -1,6 +1,10 @@
 <div class="uk-container">
   <form (ngSubmit)="onSubmit()">
 
+    <div *ngIf="errorMessage">
+      <app-message [message]="errorMessage"></app-message>
+    </div>
+
     <div class="uk-margin">
       <input class="uk-input uk-form-width-large uk-form-large" type="text" placeholder="E-mail" [(ngModel)]="email"
         name="email" />

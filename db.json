@@ -13,5 +13,16 @@
       "id": 2
     }
   ],
-  "todos": []
+  "todos": [
+    {
+      "title": "Task 04",
+      "done": false,
+      "id": 1
+    },
+    {
+      "title": "testes",
+      "done": false,
+      "id": 2
+    }
+  ]
 }

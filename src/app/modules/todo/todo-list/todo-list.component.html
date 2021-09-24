@@ -1,1 +1,26 @@
-<p>todo-list works!</p>
+<table class="uk-table uk-text-large uk-text-light">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Tasks</th>
+            <th>
+                <a routerLink="/todo/add">
+                    <span uk-icon="icon: plus; ratio: 1.5"></span>
+                </a>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="uk-animation-slide-bottom-medium" *ngFor="let todo of todos">
+            <td class="uk-width-auto">
+                <input class="uk-checkbox" type="checkbox" />
+            </td>
+            <td class="uk-width-expand">
+                {{todo.title}}
+            </td>
+            <td class="uk-width-auto">
+                <a class="uk-icon-button uk-button-danger" uk-icon="trash" routerLink="/delete/{{ todo.id }}"></a>
+            </td>
+        </tr>
+    </tbody>
+</table>

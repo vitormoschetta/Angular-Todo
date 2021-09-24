@@ -10,6 +10,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { TodoModule } from './modules/todo/todo.module';
 import { OtherModule } from './modules/other/other.module';
+import { MessageComponent } from './template/message/message.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { OtherModule } from './modules/other/other.module';
     NavbarComponent,
     HomeComponent,
     LoginComponent,
+    MessageComponent,
   ],
   imports: [
     BrowserModule,
@@ -26,6 +28,9 @@ import { OtherModule } from './modules/other/other.module';
     HttpClientModule,
     TodoModule,
     OtherModule,    
+  ],
+  exports:[
+    MessageComponent
   ],
   providers: [   
   ],
