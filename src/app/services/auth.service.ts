@@ -12,8 +12,7 @@ import { User } from '../models/user';
 })
 
 export class AuthService {
-  USER_STORE: string = 'currentUser';
-  baseUrl: string = environment.baseUrl
+  USER_STORE: string = 'currentUser';  
   private currentUserSubject!: BehaviorSubject<User | null>;
   public currentUser!: Observable<User | null>
 
@@ -32,14 +31,20 @@ export class AuthService {
   }
 
   login(email: string, password: string): Observable<User> {
-    return this.http.post<AuthResult>(`${this.baseUrl}/login`, { email, password })
-      .pipe(map(data => {
-        console.log(data)
-        const user = new User(data.user.email, data.user.password, data.user.username, data.accessToken)
-        this.localStorageService.set(user, this.USER_STORE)
-        this.currentUserSubject.next(user)
-        return user
-      }))
+    return this.http.post<AuthResult>(`${environment.baseUrl}/login`, { email, password })
+      .pipe(
+        map(data => {
+          const user = new User(
+            data.user.email,
+            data.user.password,
+            data.user.username,
+            data.accessToken
+          )
+
+          this.localStorageService.set(user, this.USER_STORE)
+          this.currentUserSubject.next(user)
+          return user
+        }))
   }
 
   logout() {
