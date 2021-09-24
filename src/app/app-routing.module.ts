@@ -3,11 +3,18 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 
-const routes: Routes = [   
-  { path: 'login', component: LoginComponent },
+const routes: Routes = [
+  { path: '', pathMatch: 'full', redirectTo: 'home' },
   { path: 'home', component: HomeComponent },
-  { path: '', component: HomeComponent },
-  { path: '**', component: HomeComponent },
+  { path: 'login', component: LoginComponent },
+  {
+    path: 'todo',
+    loadChildren: () => import('./modules/todo/todo.module').then((m) => m.TodoModule),
+  },
+  {
+    path: 'other',
+    loadChildren: () => import('./modules/other/other.module').then((m) => m.OtherModule),
+  },
 ];
 
 @NgModule({
