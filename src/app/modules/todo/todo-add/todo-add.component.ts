@@ -12,7 +12,6 @@ export class TodoAddComponent implements OnInit {
 
   form!: FormGroup
   submitted = false
-  responseError = ''
 
   constructor(
     private todoService: TodoService,
@@ -29,12 +28,7 @@ export class TodoAddComponent implements OnInit {
       return
 
     this.todoService.add(this.f.title.value).subscribe(
-      () => {
-        this.router.navigate(['/todo'])
-      },
-      (error) => {
-        this.responseError = error.message
-      })
+      () => this.router.navigate(['/todo']))
   }
 
   createForm() {

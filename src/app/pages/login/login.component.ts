@@ -24,11 +24,10 @@ export class LoginComponent {
     this.authService.login(this.email, this.password).subscribe(
       (user: User) => {
         console.log(user)
+        this.router.navigate(['/todo'])
       },
       (error) => {
-        console.log(error.message)
-      })
-
-    this.router.navigate(['/todo'])
+        this.errorMessage = error.message
+      })    
   }
 }

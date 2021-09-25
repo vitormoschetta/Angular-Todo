@@ -17,6 +17,7 @@ export class TodoEditComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private todoService: TodoService,
     private formBuilder: FormBuilder) { }
 
@@ -26,12 +27,23 @@ export class TodoEditComponent implements OnInit {
       this.todo = data
       this.createForm()
     })
+  }  
+
+  onSubmit() {
+    this.submitted = true
+    if (this.form.invalid)
+      return
+
+    this.todo.title = this.f.title.value
+
+    this.todoService.update(this.todo).subscribe(
+      () => this.router.navigate(['/todo']))
   }
 
   createForm() {
     this.form = this.formBuilder.group({
       title: [
-        '',
+        this.todo.title,
         Validators.compose([
           Validators.required
         ])

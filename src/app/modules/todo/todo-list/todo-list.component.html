@@ -13,13 +13,14 @@
     <tbody>
         <tr class="uk-animation-slide-bottom-medium" *ngFor="let todo of todos">
             <td class="uk-width-auto">
-                <input class="uk-checkbox" type="checkbox" />
+                <input class="uk-checkbox" type="checkbox" [checked]="todo.done" (change)="onCheck(todo)"  />
             </td>
             <td class="uk-width-expand">
                 {{todo.title}}
             </td>
-            <td class="uk-width-auto">
-                <a class="uk-icon-button uk-button-danger" uk-icon="trash" routerLink="/delete/{{ todo.id }}"></a>
+            <td class="uk-width-auto uk-flex">
+                <a class="uk-icon-button uk-button-primary uk-margin-right" uk-icon="pencil" routerLink="/edit/{{todo.id}}"></a>
+                <a class="uk-icon-button uk-button-danger" uk-icon="trash" routerLink="/delete/{{todo.id}}"></a>
             </td>
         </tr>
     </tbody>

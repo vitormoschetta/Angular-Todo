@@ -21,8 +21,11 @@ export class TodoListComponent implements OnInit {
       })
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void { }
 
+  onCheck(todo: Todo) {
+    todo.done = !todo.done
+    this.todoService.update(todo).subscribe()
   }
 
 }

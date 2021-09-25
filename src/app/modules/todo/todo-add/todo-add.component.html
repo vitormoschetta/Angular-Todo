@@ -1,14 +1,13 @@
 <div class="uk-container">
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        
+        <div *ngIf="submitted && f.title.invalid" class="uk-alert-danger" uk-alert>
+            <p>Informe o título da tarefa...</p>
+        </div>
+
         <div class="uk-margin">
             <input class="uk-input uk-form-width-large uk-form-large" type="text" placeholder="Description"
                 formControlName="title">
-            <div *ngIf="submitted && f.title.invalid" class="uk-alert-danger" uk-alert>
-                <p>Informe o título da tarefa...</p>
-            </div>
-            <div *ngIf="submitted && responseError" class="uk-alert-danger" uk-alert>
-                <p>Informe o título da tarefa...</p>
-            </div>
         </div>
 
         <button class="uk-button uk-button-primary uk-button-large" type="submit">
