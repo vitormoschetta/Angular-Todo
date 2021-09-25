@@ -1,35 +1,3 @@
-
-## Add JSON Server and JSON Auth
-```
-npm install -D json-server json-server-auth
-```
-
-
-Add **db.json** file schema:
-```
-{
-  "users": [ ],
-  "todos": [ ]
-}
-```
-
-Update package.json **scripts** session:
-```
-"scripts": {
-    ...   
-    "server": "json-server db.json -m ./node_modules/json-server-auth --port 2001"
-},
-```
-
-Execute JSON Server:
-```
-yarn server
-```
-
-<br>
-<br>
-
-
 ## Deploy Firebase Hosting
 
 Install firebase tools:
@@ -44,7 +12,7 @@ firebase login
 ```
 
 
-Install firebase tools:
+Setting firebase files:
 ```
 firebase init
 ```
@@ -66,3 +34,23 @@ a propriedade public é o diretório que seu arquivo buildado será encontrado:
 ```
 firebase deploy
 ```
+
+<br>
+<br>
+
+## Deploy Firebase Hosting - GitHub Actions
+
+
+Setting firebase files:
+```
+firebase init hosting:github
+```
+
+Seguir o passo a passo no terminal, entre eles:
+
+1. Vai abrir uma página para login no GitHub
+2. Vai pedir para selecionar o projeto do GitHub no terminal
+....
+
+
+No final, uma pasta com nome **github** será gerada na raíz do projeto. Ela contém arquivos de extenção `.yml`, que são utilizados pelo github actions para especificar um fluxo de CD (continuous deployment). 
