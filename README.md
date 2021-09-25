@@ -26,3 +26,43 @@ Execute JSON Server:
 yarn server
 ```
 
+<br>
+<br>
+
+
+## Deploy Firebase Hosting
+
+Install firebase tools:
+```
+npm install -g firebase-tools
+```
+
+
+Install firebase tools:
+```
+firebase login
+```
+
+
+Install firebase tools:
+```
+firebase init
+```
+
+Seguir o passa a passo no terminal, quando concluir:
+
+1. Executar o build para gerar os arquivos estáticos para produção:
+```
+ng build
+```
+
+2. Atualizar o arquivo gerado **firebase.json**:
+a propriedade public é o diretório que seu arquivo buildado será encontrado:
+```
+"public": "dist/todo",
+```
+
+3. Efetuar o deploy:
+```
+firebase deploy
+```
