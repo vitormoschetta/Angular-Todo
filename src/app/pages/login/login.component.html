@@ -2,7 +2,9 @@
   <form (ngSubmit)="onSubmit()">
 
     <div *ngIf="errorMessage">
-      <app-message [message]="errorMessage"></app-message>
+      <div class="uk-alert-danger" uk-alert>
+        <p>{{errorMessage}}</p>
+      </div>
     </div>
 
     <div class="uk-margin">

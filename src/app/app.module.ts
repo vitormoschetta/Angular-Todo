@@ -10,7 +10,6 @@ import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { TodoModule } from './modules/todo/todo.module';
 import { OtherModule } from './modules/other/other.module';
-import { MessageComponent } from './template/message/message.component';
 
 @NgModule({
   declarations: [
@@ -18,21 +17,19 @@ import { MessageComponent } from './template/message/message.component';
     NavbarComponent,
     HomeComponent,
     LoginComponent,
-    MessageComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule, 
+    ReactiveFormsModule,
     HttpClientModule,
     TodoModule,
-    OtherModule,    
+    OtherModule,
   ],
-  exports:[
-    MessageComponent
+  exports: [
   ],
-  providers: [   
+  providers: [
   ],
   bootstrap: [AppComponent]
 })

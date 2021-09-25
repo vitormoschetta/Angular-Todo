@@ -4,7 +4,10 @@
             <a routerLink="/home" class="uk-navbar-item uk-logo">Home</a>
         </div>
         <div class="uk-navbar-letf">
-            <a routerLink="/todo" class="uk-navbar-item uk-logo">Todos</a>
+            <a routerLink="/todo" class="uk-navbar-item uk-logo">Todo</a>
+        </div>
+        <div class="uk-navbar-letf">
+            <a routerLink="/other" class="uk-navbar-item uk-logo">Other</a>
         </div>
         <div *ngIf="currentUser; else visitante" class="uk-navbar-right">
             <label class="uk-navbar-item uk-logo">{{currentUser.username}}</label>
