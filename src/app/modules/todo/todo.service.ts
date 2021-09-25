@@ -13,22 +13,22 @@ export class TodoService {
   constructor(private http: HttpClient) { }
 
   getAll(): Observable<Todo[]> {
-    return this.http.get<Todo[]>(`${environment.baseUrl}/todos`)
+    return this.http.get<Todo[]>(`${environment.baseUrl}/todo`)
   }
 
   getById(id: number): Observable<Todo> {
-    return this.http.get<Todo>(`${environment.baseUrl}/todos/${id}`)
+    return this.http.get<Todo>(`${environment.baseUrl}/todo/${id}`)
   }
 
   add(title: string): Observable<Todo> {
-    return this.http.post<Todo>(`${environment.baseUrl}/todos`, { title: title, done: false })
+    return this.http.post<Todo>(`${environment.baseUrl}/todo`, { title: title, done: false })
   }
 
   delete(id: number): Observable<void> {
-    return this.http.delete<void>(`${environment.baseUrl}/todos/${id}`)    
+    return this.http.delete<void>(`${environment.baseUrl}/todo/${id}`)    
   }
 
   update(todo: Todo): Observable<void> {
-    return this.http.put<void>(`${environment.baseUrl}/todos/${todo.id}`, todo) 
+    return this.http.put<void>(`${environment.baseUrl}/todo/${todo.id}`, todo) 
   }
 }

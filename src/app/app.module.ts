@@ -7,7 +7,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './template/navbar/navbar.component';
 import { HomeComponent } from './pages/home/home.component';
-import { LoginComponent } from './pages/login/login.component';
 import { TodoModule } from './modules/todo/todo.module';
 import { OtherModule } from './modules/other/other.module';
 
@@ -16,7 +15,6 @@ import { OtherModule } from './modules/other/other.module';
     AppComponent,
     NavbarComponent,
     HomeComponent,
-    LoginComponent,
   ],
   imports: [
     BrowserModule,

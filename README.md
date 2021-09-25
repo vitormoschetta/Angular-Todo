@@ -55,3 +55,12 @@ Seguir o passo a passo no terminal, entre eles:
 
 No final, uma pasta com nome **github** será gerada na raíz do projeto. Ela contém arquivos de extenção `.yml`, que são utilizados pelo github actions para especificar um fluxo de CD (continuous deployment). 
 
+
+
+<br>
+<br>
+
+## Backend API Using:
+
+<https://mockapi.io/>
+
